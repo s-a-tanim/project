@@ -407,31 +407,48 @@ The dataset supports sustainable research practices by enabling the development 
 
 <script>
     let showTimeout;
-    let hideTimeout;
-    let popupBar = document.getElementById('popup-bar');
+let hideTimeout;
+let popupBar = document.getElementById('popup-bar');
 
-    // Function to handle the display of popup-bar based on scroll
-    function handleScroll() {
-        // Hide the popup bar when scrolling
-        popupBar.style.display = 'none';
+// Function to check if the user is in the Home section
+function isInHomeSection() {
+    const homeSection = document.getElementById('Home');
+    const rect = homeSection.getBoundingClientRect();
+    return rect.top <= 0 && rect.bottom >= window.innerHeight; // Check if the Home section is in view
+}
 
-        // Clear the previous timeouts if any
-        clearTimeout(showTimeout);
-        clearTimeout(hideTimeout);
-
-        // Set a timeout to show the popup bar after scroll stops (200ms delay)
-        showTimeout = setTimeout(function() {
-            popupBar.style.display = 'block'; // Show the popup bar after scroll stops
-
-            // Set a timeout to hide the popup bar 5 seconds after it appears
-            hideTimeout = setTimeout(function() {
-                popupBar.style.display = 'none'; // Hide the popup bar after 5 seconds
-            }, 5000);
-        }, 200);
+// Function to handle the display of popup-bar based on scroll
+function handleScroll() {
+    // Don't show the popup bar if the Home section is in view
+    if (isInHomeSection()) {
+        popupBar.classList.remove('show');
+        popupBar.classList.add('hide');
+        return; // Exit the function if in the Home section
     }
 
-    // Event listener for scroll event
-    window.addEventListener('scroll', handleScroll);
+    // Clear previous timeouts if any
+    clearTimeout(showTimeout);
+    clearTimeout(hideTimeout);
+
+    // Hide the popup bar when scrolling
+    popupBar.classList.remove('show');
+    popupBar.classList.add('hide');
+
+    // Set a timeout to show the popup bar after scroll stops (200ms delay)
+    showTimeout = setTimeout(function () {
+        popupBar.classList.remove('hide');
+        popupBar.classList.add('show'); // Show the popup bar with slide-in animation
+
+        // Set a timeout to hide the popup bar 2 seconds after it appears
+        hideTimeout = setTimeout(function () {
+            popupBar.classList.remove('show');
+            popupBar.classList.add('hide'); // Hide the popup bar with slide-out animation
+        }, 2000); // 2 seconds delay before hiding
+    }, 200); // 200ms delay after scrolling stops
+}
+
+// Event listener for scroll event
+window.addEventListener('scroll', handleScroll);
 </script>
 
 
