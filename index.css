@@ -142,43 +142,32 @@ footer {
 
 #popup-bar {
     position: fixed;
-    top: 50%; /* Center vertically */
-    right: 0;
+    right: -160px; /* Start off-screen */
+    top: 50%;
     transform: translateY(-50%);
     background-color: #823385;
     padding: 10px;
     border-radius: 8px 0 0 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    display: block; /* Ensure the popup is visible */
     z-index: 1000;
-}
-
-/* #popup-bar a {
-    display: block;
-    text-decoration: none;
-    color: #fff;
-    padding: 10px;
-    margin: 5px 0;
-    text-align: center;
-    background-color: #3b2c71;
-    border-radius: 4px;
-} */
-#popup-bar {
-    position: fixed;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #823385;
-    padding: 8px;
-    border-radius: 10px 10px 10px 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    display: none; /* Initially hidden */
-    z-index: 1000;
-    width: 150px; /* Adjust width as necessary */
+    width: 150px;
     text-align: center;
     font-family: Arial, sans-serif;
+    opacity: 0; /* Start invisible */
+    transition: opacity 0.4s ease-in-out, right 0.4s ease-in-out; /* Smooth transition */
 }
 
+#popup-bar.show {
+    opacity: 1; /* Fully visible */
+    right: 0; /* Slide into view */
+    animation: slideIn 0.5s ease-out;
+}
+
+#popup-bar.hide {
+    opacity: 0; /* Fully hidden */
+    right: -160px; /* Slide out of view */
+    animation: slideOut 0.4s ease-in;
+}
 
 #popup-bar a {
     display: block;
@@ -196,18 +185,22 @@ footer {
     border-radius: 5px;
 }
 
-/* Optional: Add animation for smooth entrance when the bar reappears */
+/* Entrance animation */
 @keyframes slideIn {
     0% {
-        right: -160px; /* Initially off-screen */
+        right: -160px; /* Start off-screen */
     }
     100% {
-        right: 0; /* Final position on the right */
+        right: 0; /* Final position */
     }
 }
 
-#popup-bar {
-    animation: slideIn 0.5s ease-out;
+/* Exit animation */
+@keyframes slideOut {
+    0% {
+        right: 0; /* Start on-screen */
+    }
+    100% {
+        right: -160px; /* End off-screen */
+    }
 }
-
-
