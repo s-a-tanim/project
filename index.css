@@ -143,7 +143,6 @@ footer {
 }
 
 
-/* Popup Bar  new*/
 #popup-bar {
     position: fixed;
     right: -160px; /* Start off-screen */
@@ -157,22 +156,23 @@ footer {
     width: 150px;
     text-align: center;
     font-family: Arial, sans-serif;
-    opacity: 0; /* Start invisible */
-    transition: opacity 0.4s ease-in-out, right 0.4s ease-in-out; /* Smooth transition */
+    opacity: 0;  /* Start with no opacity */
+    transition: opacity 0.5s ease-in-out, right 0.5s ease-in-out;  /* Smooth transition */
 }
 
+/* Show Popup Bar */
 #popup-bar.show {
-    opacity: 1; /* Fully visible */
-    right: 0; /* Slide into view */
-    animation: slideIn 0.5s ease-out;
+    opacity: 1;  /* Make it visible */
+    right: 0;    /* Slide in to the right */
 }
 
+/* Hide Popup Bar */
 #popup-bar.hide {
-    opacity: 0; /* Fully hidden */
-    right: -160px; /* Slide out of view */
-    animation: slideOut 0.4s ease-in;
+    opacity: 0;   /* Fade out */
+    right: -160px;  /* Slide out off-screen */
 }
 
+/* Styling for Links in Popup */
 #popup-bar a {
     display: block;
     color: white;
