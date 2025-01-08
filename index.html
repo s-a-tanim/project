@@ -383,7 +383,7 @@ The dataset supports sustainable research practices by enabling the development 
     </footer>
 
 
-<script>
+<!-- <script>
     let timeout;
     let popupBar = document.getElementById('popup-bar');
 
@@ -403,8 +403,36 @@ The dataset supports sustainable research practices by enabling the development 
 
     // Event listener for scroll event
     window.addEventListener('scroll', handleScroll);
-</script>
+</script> -->
 
+<script>
+    let showTimeout;
+    let hideTimeout;
+    let popupBar = document.getElementById('popup-bar');
+
+    // Function to handle the display of popup-bar based on scroll
+    function handleScroll() {
+        // Hide the popup bar when scrolling
+        popupBar.style.display = 'none';
+
+        // Clear the previous timeouts if any
+        clearTimeout(showTimeout);
+        clearTimeout(hideTimeout);
+
+        // Set a timeout to show the popup bar after scroll stops (200ms delay)
+        showTimeout = setTimeout(function() {
+            popupBar.style.display = 'block'; // Show the popup bar after scroll stops
+
+            // Set a timeout to hide the popup bar 5 seconds after it appears
+            hideTimeout = setTimeout(function() {
+                popupBar.style.display = 'none'; // Hide the popup bar after 5 seconds
+            }, 5000);
+        }, 200);
+    }
+
+    // Event listener for scroll event
+    window.addEventListener('scroll', handleScroll);
+</script>
 
 
 
