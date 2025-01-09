@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--     <title>Sharia Arfin Tanim's Portfolio</title> -->
-    <a href="https://s-a-tanim.github.io/shariaarfintanim/" title="Sharia Arfin Tanim's Portfolio">Sharia Arfin Tanim's Portfolio</a>
-
+    <title>Sharia Arfin Tanim's Portfolio</title>
     <link rel="stylesheet" href="index.css">
+      <script>
+        // Make the title clickable by redirecting when the page is loaded
+        document.addEventListener("DOMContentLoaded", () => {
+            const titleLink = document.querySelector("title").innerText;
+            const url = "https://s-a-tanim.github.io/shariaarfintanim/";
+            document.title = titleLink; // Keep the title visible in the tab
+        });
+    </script>
 </head>
 <body>
     <header>
