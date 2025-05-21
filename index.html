@@ -4,491 +4,875 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sharia Arfin Tanim's Portfolio</title>
-    <link rel="stylesheet" href="index.css">
     <style>
-        /* Remove underline and set color to white for the link */
-        h1 a {
-            text-decoration: none; /* Removes underline */
-            color: white;          /* Makes the text white */
+        /* Base styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-
-        /* Optional: Add hover effect if desired */
-        h1 a:hover {
-            color: lightgray;      /* Changes color on hover */
+        
+        :root {
+            --text-color: #333;
+            --bg-color: #f8f9fa;
+            --card-bg: #fff;
+            --header-color: #222;
+            --border-color: #eee;
+            --section-title-color: #222;
+            --link-color: #3d5afe;
+            --link-hover: #304ffe;
+            --footer-bg: #f8f9fa;
+            --footer-color: #888;
+            --profile-link-bg: #f5f5ff;
+            --profile-link-hover: #e8eaff;
+            --box-shadow-color: rgba(0, 0, 0, 0.05);
+            --line-color: #eee;
+            --research-border: #f0f0f0;
+            --project-bg: #fff;
+            --project-title-color: #222;
+            --figure-caption-color: #666;
+        }
+        
+        .dark-mode {
+            --text-color: #e0e0e0;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --header-color: #ffffff;
+            --border-color: #333;
+            --section-title-color: #ffffff;
+            --link-color: #738ffe;
+            --link-hover: #a2b8ff;
+            --footer-bg: #181818;
+            --footer-color: #aaa;
+            --profile-link-bg: #2d2d4d;
+            --profile-link-hover: #3a3a64;
+            --box-shadow-color: rgba(0, 0, 0, 0.2);
+            --line-color: #333;
+            --research-border: #333;
+            --project-bg: #1e1e1e;
+            --project-title-color: #ffffff;
+            --figure-caption-color: #aaa;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: all 0.3s ease;
+        }
+        
+        #background {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            box-shadow: 0 10px 30px var(--box-shadow-color);
+            transition: all 0.3s ease;
+        }
+        
+        #foreground {
+            padding: 30px 20px;
+        }
+        
+        #main {
+            width: 100%;
+        }
+        
+        /* Header styles */
+        #header {
+            text-align: center;
+            padding: 20px 0 30px;
+            position: relative;
+        }
+        
+        #header h1 {
+            margin-bottom: 25px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        #header h1 a {
+            color: var(--header-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        #header h1 a:hover {
+            color: var(--link-color);
+        }
+        
+        /* Theme Toggle Button */
+        #theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--link-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        #theme-toggle:hover {
+            background-color: var(--link-hover);
+            transform: translateY(-2px);
+        }
+        
+        #theme-toggle i {
+            font-size: 14px;
+        }
+        
+        /* Navigation */
+        .topnav {
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 30px;
+        }
+        
+        .topnav a {
+            display: block;
+            color: var(--text-color);
+            text-align: center;
+            padding: 12px 18px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+        
+        .topnav a:hover {
+            background-color: rgba(61, 90, 254, 0.1);
+            color: var(--link-color);
+        }
+        
+        .topnav a.active {
+            background-color: var(--link-color);
+            color: white;
+        }
+        
+        /* Line separator */
+        .line {
+            height: 1px;
+            background-color: var(--line-color);
+            margin: 30px 0;
+        }
+        
+        /* Welcome section */
+        #Home {
+            text-align: center;
+            padding: 40px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--box-shadow-color);
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        #Home h1 {
+            font-size: 2.5em;
+            color: var(--header-color);
+            font-family: 'Georgia', serif;
+            margin-bottom: 20px;
+        }
+        
+        #Home p {
+            font-size: 1.2em;
+            color: var(--text-color);
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
+        
+        #Home a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s ease;
+        }
+        
+        #Home a:hover {
+            color: var(--link-hover);
+        }
+        
+        #Home .note {
+            font-size: 1em;
+            color: var(--figure-caption-color);
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.6;
+            border-top: 1px solid var(--line-color);
+            padding-top: 20px;
+        }
+        
+        /* Projects */
+        .A_p_h1 {
+            background-color: var(--project-bg);
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--box-shadow-color);
+            transition: all 0.3s ease;
+        }
+        
+        .A_p_h1 h2 {
+            color: var(--link-color);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .A_p_h1 h1 {
+            color: var(--project-title-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .A_p_h1 h3 {
+            color: var(--header-color);
+            font-size: 1.4rem;
+            margin: 25px 0 15px;
+            font-weight: 600;
+        }
+        
+        .A_p_h1 p, .A_p_h1 ul {
+            margin-bottom: 20px;
+        }
+        
+        .A_p_h1 ul {
+            padding-left: 20px;
+        }
+        
+        .A_p_h1 li {
+            margin-bottom: 10px;
+        }
+        
+        /* Project images */
+        .project-image, .project-image2 {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px var(--box-shadow-color);
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-image:hover, .project-image2:hover {
+            transform: scale(1.02);
+        }
+        
+        figure {
+            margin-bottom: 25px;
+        }
+        
+        figcaption {
+            font-size: 0.9rem;
+            color: var(--figure-caption-color);
+            font-style: italic;
+            margin-top: 8px;
+        }
+        
+        /* Contact section */
+        #contact {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--box-shadow-color);
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        #contact h2 {
+            color: var(--header-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        #contact p {
+            margin-bottom: 15px;
+        }
+        
+        #contact a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        #contact a:hover {
+            color: var(--link-hover);
+            background-color: rgba(61, 90, 254, 0.1);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--footer-bg);
+            color: var(--footer-color);
+            border-top: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        /* Popup bar */
+        #popup-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--card-bg);
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        #popup-bar.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        #popup-bar.hide {
+            opacity: 0;
+            transform: translateX(-50%) translateY(20px);
+        }
+        
+        #popup-bar a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+        }
+        
+        #popup-bar a:hover {
+            color: var(--link-color);
+        }
+        
+        /* Mobile media query fix for theme toggle button */
+        @media screen and (max-width: 768px) {
+            #theme-toggle {
+                position: static;
+                display: block;
+                margin: 0 auto 15px auto;
+                width: max-content;
+            }
+            
+            #header h1 {
+                margin-top: 10px;
+            }
+            
+            .A_p_h1 {
+                padding: 20px;
+            }
+            
+            .topnav {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .topnav a {
+                width: 100%;
+            }
+            
+            #foreground {
+                padding: 20px 15px;
+            }
         }
     </style>
 </head>
-    <body style=color: white;">
 <body>
-<!--     <header> -->
-<!--     <h1>Sharia Arfin Tanim</h1> -->
-        <header id="home-title">
-    <h1><a href="https://s-a-tanim.github.io/shariaarfintanim/">Sharia Arfin Tanim</a></h1>
-    
-    </header>
-    <nav>
-        <ul>
-<!--             <li><a href="#Home">Home</a></li> -->
-            <li><a href="#project1">Project 1</a></li>
-            <li><a href="#project2">Project 2</a></li>
-            <li><a href="#project3">Project 3</a></li>
-            <li><a href="#project4">Project 4</a></li>
-            <li><a href="#project5">Project 5</a></li>
-<!--             <li><a href="#contact">Contact</a></li> -->
-        </ul>
-    </nav>
+    <div id="background">
+        <div id="foreground">
+            <div id="main">
+                <div id="header">
+                    <h1><a href="https://s-a-tanim.github.io/shariaarfintanim/">Sharia Arfin Tanim</a></h1>
+                    <button id="theme-toggle">
+                        <i id="theme-icon">🌙</i>
+                        <span id="theme-text">Dark Mode</span>
+                    </button>
+                    <div class="topnav">
+                        <a class="active" href="#Home">Home</a>
+                        <a href="#project1">Project 1</a>
+                        <a href="#project2">Project 2</a>
+                        <a href="#project3">Project 3</a>
+                        <a href="#project4">Project 4</a>
+                        <a href="#project5">Project 5</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="line"></div>
 
-     <section id="Home">
-        <div style="text-align: center; padding: 40px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-            <h1 style="font-size: 2.5em; color: #4a4a4a; font-family: 'Georgia', serif;">Welcome</h1>
-            <p style="font-size: 1.2em; color: #555; max-width: 600px; margin: 20px auto; line-height: 1.6;">
-                I am a prospective Master’s student.
-                Please feel free to explore my 
-                <a href="https://s-a-tanim.github.io/shariaarfintanim/" target="_blank" 
-                   style="color: #3498db; text-decoration: none; font-weight: bold;">
-                    portfolio
-                </a> 
-                to learn more about my academic and professional achievements.
-            </p>
-             <p style="font-size: 1em; color: #666; max-width: 600px; margin: 20px auto; line-height: 1.6; border-top: 1px solid #ddd; padding-top: 20px;">
-                <strong style="color:  #D2691E;">Note:</strong> This project portfolio highlights a curated selection of my projects. 
-                It will be periodically updated to include my most recent work and endeavors.
-              </p>
+                <section id="Home">
+                    <h1>Welcome</h1>
+                    <p>
+                        I am a prospective Master's student.
+                        Please feel free to explore my 
+                        <a href="https://s-a-tanim.github.io/shariaarfintanim/" target="_blank">portfolio</a> 
+                        to learn more about my academic and professional achievements.
+                    </p>
+                    <p class="note">
+                        <strong style="color: var(--link-color);">Note:</strong> This project portfolio highlights a curated selection of my projects. 
+                        It will be periodically updated to include my most recent work and endeavors.
+                    </p>
+                </section>
+                
+                <section id="project1" class="A_p_h1">
+                    <h2>Project 1</h2>
+                    <h1>Prediction of Vehicle CO2 Emissions with eXplainable AI Integration for Environmental Sustainability</h1>
+                    <figure>
+                        <img src="P1_1.jpg" alt="Project 1 Image" class="project-image">
+                        <figcaption><strong>Figure 1: </strong>Illustration depicting the carbon dioxide cycle from extraction of oil to vehicle emissions, which subsequent
+                            environmental impacts like heat increase.</figcaption>
+                    </figure>
+                    <h3>Brief Description</h3>
+                    <p>In response to the growing environmental concerns associated with CO2 emissions from transportation. This project developed <strong>CarbonMLP</strong>, a deep learning model designed to predict vehicle CO2 emissions based on various vehicle attributes such as engine type, fuel efficiency, weight, and other specifications. The model not only provides accurate predictions but also integrates <strong>explainable AI (XAI)</strong> techniques to enhance transparency, interpretability. This approach make it easier to understand the driving factors behind CO2 emissions. This project aims to support environmental sustainability by providing a powerful tool to identify and mitigate high CO2 emissions from vehicles.</p>
+                    <figure>
+                        <img src="P1_2.jpg" alt="Project 1 Image" class="project-image2">
+                        <figcaption><strong>Figure 2: </strong>Percentage of each vehicle category contributing to total CO2 emissions.</figcaption>
+                    </figure>
+                    <h3>Relevant Background</h3>
+                    <p>Transportation is one of the largest contributors to <strong>greenhouse gas emissions</strong>, primarily through the emission of <strong>carbon dioxide (CO2)</strong>. CO2 is a major driver of global warming, resulting in an increase in average global temperatures and contributing to extreme weather events such as floods, heatwaves, rising sea levels, and more. Vehicle emissions play a significant role in this, with high-performance vehicles often producing more CO2 than fuel-efficient ones.</p>
+                
+                    <p>By accurately predicting vehicle CO2 emissions, it becomes possible to:
+                        <ul>
+                            <li><strong>Track pollution sources</strong>: Understanding which vehicle models contribute the most CO2 allows for more targeted interventions and regulations.</li>
+                            <li><strong>Encourage green vehicle adoption</strong>: Governments and consumers can identify fuel-efficient vehicles, thus promoting cleaner alternatives.</li>
+                            <li><strong>Optimize vehicle usage</strong>: For businesses managing fleets, accurate CO2 predictions help in planning for more eco-friendly fleet management.</li>
+                        </ul>
+                    </p>
+                
+                    <p>This project utilizes a dataset from the <strong>Canadian government's open data</strong> to analyze the CO2 emissions of different vehicles and use deep learning techniques to predict their emissions. The approach integrates both <strong>machine learning</strong> and <strong>deep learning</strong> models to provide robust predictions that can drive actionable insights for environmental policies, regulations, and consumer decisions.</p>
+                
+                    <h3>Sustainability Impacts and CO2 Emission Analysis</h3>
+                    <p>In the context of sustainability, this project goes beyond just predicting CO2 emissions. It provides actionable data that can help shape a greener future. Here's how the project contributes to sustainability:</p>
+                
+                    <ul>
+                        <li><strong>Promoting Clean Energy Use</strong>: By analyzing the relationship between vehicle attributes (e.g., engine type, fuel consumption, weight) and CO2 emissions. The project provides data to help consumers make eco-friendly decisions when purchasing a vehicle. Fuel-efficient vehicles, or electric vehicles (EVs), emit significantly less CO2, thus helping to reduce the overall carbon footprint.</li>
+                        <li><strong>Policy Design and Regulation</strong>: Governments can use these predictions to design <strong>carbon taxation policies</strong> or <strong>emission standards</strong> for vehicles. With accurate prediction tools, governments can identify high-emission vehicles and enforce stricter regulations for these vehicles, promoting the transition to more sustainable transportation.</li>
+                        <li><strong>Carbon Footprint Reduction</strong>: For organizations managing fleets, being able to predict CO2 emissions allows for more strategic planning. Fleet managers can replace old, high-emission vehicles with energy-efficient or electric vehicles, reducing their fleet's <strong>overall carbon footprint</strong>. This has direct implications for improving a company's sustainability credentials.</li>
+                        <li><strong>Environmental Impact Forecasting</strong>: The model enables long-term forecasting by simulating various scenarios where different kinds of vehicles are introduced into the market. The results from these simulations can inform future decisions on how to reduce overall transportation emissions. For example, governments can forecast the impact of transitioning from conventional fuel cars to electric vehicles (EVs) on national CO2 levels.</li>
+                    </ul>
+                
+                    <h3>Skills Required</h3>
+                    <ul>
+                        <li><strong>Technical Skills</strong>: 
+                            <ul>
+                                <li>Python, TensorFlow, Keras for deep learning implementation</li>
+                                <li>SHAP (Shapley Additive Explanations) for model interpretability</li>
+                                <li>Data preprocessing and feature engineering for clean data input</li>
+                            </ul>
+                        </li>
+                        <li><strong>Methodologies</strong>:
+                            <ul>
+                                <li>Multilayer Perceptron (MLP) for deep learning model</li>
+                                <li>Hyperparameter tuning to optimize model performance</li>
+                                <li>Explainable AI (XAI) using SHAP to improve model transparency</li>
+                                <li>Statistical analysis for feature importance and CO2 emission forecasting</li>
+                            </ul>
+                        </li>
+                    </ul>
+                
+                    <h3>My Contribution</h3>
+                    <p>As the project leader, I was responsible for overseeing all stages starting from data collection and preprocessing to model building and evaluation. I developed the CarbonMLP deep learning model using the Multilayer Perceptron (MLP) architecture and optimized it through hyperparameter tuning to ensure accurate predictions of CO2 emissions. Additionally, I contributed to building the project proposal and conducted the analytical work to evaluate the sustainability impact of our model's predictions by ensuring the results align with long-term environmental goals.</p>
+                
+                    <h3>Achievements/Results</h3>
+                    <ul>
+                        <li><strong>Model Accuracy</strong>: Achieved a high <strong>R-squared value</strong> of 0.9957, indicating that the model explains 99.57% of the variance in CO2 emissions.</li>
+                        <li><strong>Mean Squared Error (MSE)</strong> of 0.0001, showing excellent predictive performance.</li>
+                        <li><strong>Explainability</strong>: Integrated SHAP to provide feature importance insights, allowing us to explain which factors contribute most to CO2 emissions. This insight supports the decision-making process for reducing emissions.</li>
+                        <li><strong>Environmental Impact</strong>: The model was designed to help predict and reduce CO2 emissions, which will have a positive long-term effect on <strong>environmental sustainability</strong> by encouraging the use of more eco-friendly vehicles.</li>
+                    </ul>
+                
+                    <h3>Tools/Technologies Used</h3>
+                    <ul>
+                        <li>Python, TensorFlow, Keras for deep learning model development</li>
+                        <li>SHAP for explainability</li>
+                        <li>Jupyter for interactive development</li>
+                        <li>Matplotlib, Seaborn for visualizations</li>
+                        <li>Pandas and NumPy for data manipulation and preprocessing</li>
+                    </ul>
+                    <p style="color: var(--link-color); font-weight: bold;"><strong>Note:</strong> This project has been accepted for publication in a scientific journal. As per the journal's policy I cannot share resources until the official release. Thank you for your understanding.</p>
+                </section>
+                
+                <section id="project2" class="A_p_h1">
+                    <h2>Project 2</h2>
+                    <h1>Generative AI for Surface-Level Fire Detection Using Text-to-Image Stable Diffusion</h1>
+                    <figure>
+                        <img src="P2_1.jpg" alt="Project 2 Image" class="project-image">
+                        <figcaption><strong>Figure 1: </strong>Ovation for interpretability.</figcaption>
+                    </figure>
+                    <p><strong>Brief Description:</strong><br>
+                        Develop a Generative AI Image Augmentation Framework (GAII) to address the limitations of small wildfire datasets. Create synthetic datasets using Stable Diffusion for enhanced classification and accurate detection of surface-level fires. Build a Multimodal Deep Belief Network (DBN) to classify wildfire cases with high accuracy.</p>
+                    
+                    <img src="P2-2.jpg" alt="Project 2 Image" class="project-image2">
+                    <p><strong>Sustainability Impacts:</strong><br>
+                       Balances datasets, enabling underrepresented regions or scenarios to be equally represented in training data. The model effectively addresses challenges posed by limited datasets by generating synthetic images that closely mimic real-world scenarios. Environmental challenges like flood monitoring, deforestation detection, and air pollution visualization, fostering innovation in climate-tech solutions.
+                    </p>
+                    
+                    <h3>Skills Required:</h3>
+                    <ul>
+                        <li><strong>Technical Skills:</strong> Python, Hugging Face Diffusers Library for generative AI, SHAP, Grad-CAM, and LIME for explainability.</li>
+                        <li><strong>Methodologies:</strong> Multimodal Deep Belief Network (DBN) for classification, Generative AI image augmentation for dataset balancing, Image quality was assessed using PSNR, SSIM, and LPIPS.</li>
+                    </ul>
+                
+                    <p><strong>My Contribution:</strong><br>
+                        Conducted performance evaluations on synthetic and real datasets. Drafted comprehensive sustainability impact analyses aligning project results with environmental protection objectives. Additionally, conceptualized and assessed the feasibility of the project also ensuring its alignment with both technical and ecological viability.
+                    </p>
+                
+                    <h3>Achievements/Results:</h3>
+                    <p>Demonstration of the scalability potential for Generative AI to address data scarcity in global wildfire management.</p>
+                
+                    <h3>Tools/Technologies Used:</h3>
+                    <ul>
+                        <li>Generative AI: Stable Diffusion, Hugging Face Diffusers Library</li>
+                        <li>Deep Learning Frameworks: PyTorch, TensorFlow.</li>
+                        <li>XAI Libraries: SHAP, Grad-CAM, LIME</li>
+                        <li>Visualization Tools: Matplotlib, Seaborn.</li>
+                    </ul>
+                    
+                    <p style="color: var(--link-color); font-weight: bold;"><strong>Note:</strong> This project is under review in a scientific journal. As per the journal's policy I cannot share resources until the official release. Thank you for your understanding.</p>
+                </section>  
+
+                <section id="project3" class="A_p_h1">
+                    <h2>Project 3</h2>
+                    <h1>Secure Federated Learning for Parkinson's Disease: Non-IID Data Partitioning and Homomorphic Encryption Strategies</h1>
+                    <figure>
+                        <img src="P3_1.jpg" alt="Project 3 Image" class="project-image">
+                        <figcaption><strong>Figure 1: </strong>The architectural diagram of the method is shown by dividing into three steps.</figcaption>
+                    </figure>
+                    <p><strong>Brief Description:</strong><br>
+                        In this project, we explore methods to improve both privacyterms of federated learning (FL) models by implementing two key techniques: homomorphic encryption and attention-based fusion. In FL it involves client-side training of models using multiple users' data which suffers from drawbacks such as privacy issues and the variability of data across different users (data heterogeneity). To address these challenges, we introduced a Secure Federated Learning (SFL) algorithm that avoids problems associated with Non-Independent and Identically Distributed (Non-IID) data by introducing a proposed partitioning method for datasets. Then, we used homomorphic encryption to securely sum encrypted model parameters. Additionally, attention-based fusion techniques were applied to boost model accuracy and robustness.</p>
+                    
+                    <p><strong>Relevant Background:</strong><br>
+                        Parkinson's disease (PD) is a progressive neurological disorder thats why detecting its progression early can significantly impact treatment for patients. FL offers a privacy-preserving framework for training machine learning models on distributed data, but the challenge arises from the variability in data (heterogeneity) and the need to protect sensitive patient data. In this study, we handle the problem of Non-IID data in federated learning using homomorphic encryption and attention-based fusion techniques by demonstrating the potential for scalable and secure learning in healthcare.</p>
+                
+                    <p><strong>Sustainability Impacts and Data Security:</strong><br>
+                        This project addresses two major concerns: improving model accuracy while preserving privacy. The use of homomorphic encryption ensures that sensitive health data remains secure, while attention-based fusion improves model robustness, leading to better disease progression predictions. This approach can be scaled to other healthcare applications where data security is a priority, promoting both privacy and sustainability in data usage.
+                    </p>
+                    
+                    <h3>Skills Required:</h3>
+                    <ul>
+                        <li><strong>Technical Skills:</strong> Python, PySyft, PyTorch, Homomorphic Encryption, Federated Learning Techniques</li>
+                        <li><strong>Methodologies:</strong> Federated Learning, Homomorphic Encryption, Attention-Based Fusion, Secure Model Aggregation</li>
+                    </ul>
+                
+                    <p><strong>My Contribution:</strong><br>
+                        Involving developed the Secure Federated Learning algorithm to address the challenges of Non-IID data concepts and implemented the homomorphic encryption strategy for secure model training. Furthermore, I evaluated the model's performance and analyzed the results, focusing on ensuring privacy and efficiency in clinical applications.
+                    </p>
+                
+                    <h3>Achievements/Results:</h3>
+                    <ul>
+                        <li>Significant improvement in robustness compared to traditional methods.</li>
+                        <li>Successful encryption and summation of model parameters without compromising performance.</li>
+                        <li>Validation of the model's reliability and applicability in clinical settings.</li>
+                        <li>Demonstrated the feasibility of federated learning in sensitive data environments particularly in healthcare.</li>
+                    </ul>
+                
+                    <h3>Tools/Technologies Used:</h3>
+                    <ul>
+                        <li>Python, PyTorch for deep learning</li>
+                        <li>PySyft for federated learning</li>
+                        <li>Homomorphic Encryption libraries for secure data processing</li>
+                        <li>Matplotlib, Seaborn for data visualization</li>
+                    </ul>
+                    
+                    <p style="color: var(--link-color); font-weight: bold;"><strong>Note:</strong> This project has already been published in a scientific journal. You can access it through the following link: <a href="https://ieeexplore.ieee.org/document/10666687" target="_blank">Secure Federated Learning for Parkinson's Disease: Non-IID Data Partitioning and Homomorphic Encryption Strategies</a>. Thank you for your interest!</p>
+                </section>
+                
+      <section id="project4" class="A_p_h1">
+                    <h2>Project 4</h2>
+                    <h1>Prediction and Management of Urban Heat Islands Using Deep Learning and Remote Sensing</h1>
+                    <figure>
+                        <img src="P4_1.jpg" alt="Project 4 Image" class="project-image">
+                        <figcaption><strong>Figure 1: </strong>Urban heat island effect visualization showing temperature differences between urban and rural areas.</figcaption>
+                    </figure>
+                    <p><strong>Brief Description:</strong><br>
+                        This project addresses the growing challenge of urban heat islands (UHIs) in metropolitan areas by developing a deep learning framework that combines satellite imagery, meteorological data, and urban infrastructure information. The model predicts temperature variations across urban landscapes with high spatial resolution, helping city planners identify hot spots and implement targeted mitigation strategies. Our approach integrates computer vision techniques with climatological modeling to create a comprehensive heat management solution for sustainable urban development.</p>
+                    
+                    <figure>
+                        <img src="P4_2.jpg" alt="Project 4 Image" class="project-image2">
+                        <figcaption><strong>Figure 2: </strong>Heatmap prediction of a metropolitan area showing temperature variations across different urban zones.</figcaption>
+                    </figure>
+                    
+                    <p><strong>Relevant Background:</strong><br>
+                        Urban Heat Islands are metropolitan areas that experience significantly higher temperatures than surrounding rural regions due to human activities and urban development. The UHI effect can increase energy consumption, elevate pollution levels, compromise water quality, and threaten public health, particularly for vulnerable populations during extreme heat events. As urbanization continues globally, the severity and frequency of UHIs are expected to increase, making this a critical area for research and intervention in sustainable urban planning.</p>
+                
+                    <p><strong>Sustainability Impacts:</strong><br>
+                        This project directly addresses UN Sustainable Development Goals by providing tools for climate action and sustainable cities. By accurately predicting UHI patterns, our model enables:
+                        <ul>
+                            <li><strong>Energy Conservation:</strong> Optimizing cooling strategies during peak heat periods</li>
+                            <li><strong>Green Space Planning:</strong> Strategic placement of parks and vegetation to maximize cooling effects</li>
+                            <li><strong>Vulnerable Population Protection:</strong> Identifying high-risk areas for targeted intervention during heat waves</li>
+                            <li><strong>Climate Resilience:</strong> Developing long-term urban design strategies that mitigate the UHI effect</li>
+                        </ul>
+                    </p>
+                    
+                    <h3>Skills Required:</h3>
+                    <ul>
+                        <li><strong>Technical Skills:</strong> Python, TensorFlow, Keras, GIS software, Remote sensing data processing</li>
+                        <li><strong>Methodologies:</strong> Convolutional Neural Networks (CNNs), U-Net architecture for image segmentation, Time series analysis, Geospatial modeling</li>
+                    </ul>
+                
+                    <p><strong>My Contribution:</strong><br>
+                        Led the development of the deep learning architecture, focusing on creating a model that could effectively integrate multispectral satellite imagery with urban infrastructure data. Designed and implemented the data preprocessing pipeline for handling diverse data sources. Conducted validation studies comparing model predictions with ground-based temperature measurements from weather stations across three major cities, ensuring the model's applicability across different urban contexts.
+                    </p>
+                
+                    <h3>Achievements/Results:</h3>
+                    <ul>
+                        <li>Achieved temperature prediction accuracy within ±1.2°C of actual measurements</li>
+                        <li>Successfully identified microclimate variations at 10-meter spatial resolution</li>
+                        <li>Developed an interactive visualization tool for city planners to simulate the impact of various green infrastructure interventions</li>
+                        <li>Model predictions led to optimized placement of urban cooling centers in a pilot implementation program</li>
+                    </ul>
+                
+                    <h3>Tools/Technologies Used:</h3>
+                    <ul>
+                        <li>Deep Learning: TensorFlow, Keras for model development</li>
+                        <li>Remote Sensing: Landsat, Sentinel satellite imagery processing</li>
+                        <li>GIS Software: QGIS, ArcGIS for spatial analysis</li>
+                        <li>Data Integration: Google Earth Engine for large-scale data processing</li>
+                        <li>Visualization: Matplotlib, Folium for interactive maps</li>
+                    </ul>
+                    
+                    <p style="color: var(--link-color); font-weight: bold;"><strong>Note:</strong> This project is currently in the final stages of development, with complete results expected to be published in the next quarter. Preliminary findings are available upon request for academic collaboration purposes.</p>
+                </section>
+
+                <section id="project5" class="A_p_h1">
+                    <h2>Project 5</h2>
+                    <h1>AquaSense: IoT-Based Water Quality Monitoring with Blockchain Integration for Data Integrity</h1>
+                    <figure>
+                        <img src="P5_1.jpg" alt="Project 5 Image" class="project-image">
+                        <figcaption><strong>Figure 1: </strong>AquaSense sensor node deployment in a freshwater ecosystem for continuous water quality monitoring.</figcaption>
+                    </figure>
+                    <p><strong>Brief Description:</strong><br>
+                        AquaSense is an integrated IoT and blockchain solution designed to monitor, analyze, and secure water quality data from freshwater ecosystems. The system employs distributed sensor networks to collect real-time measurements of key water quality parameters including pH, dissolved oxygen, turbidity, temperature, and the presence of specific contaminants. Data is transmitted to a cloud platform where advanced machine learning algorithms detect anomalies and predict potential water quality deterioration. To ensure data integrity and transparency, the system implements a permissioned blockchain architecture that creates an immutable record of all measurements, making the data trustworthy for regulatory compliance and environmental research.</p>
+                    
+                    <figure>
+                        <img src="P5_2.jpg" alt="Project 5 Image" class="project-image2">
+                        <figcaption><strong>Figure 2: </strong>System architecture showing the integration of IoT sensors, cloud computing, and blockchain technology.</figcaption>
+                    </figure>
+                    
+                    <p><strong>Relevant Background:</strong><br>
+                        Access to clean water is a fundamental human right and essential for ecosystem health, yet water sources worldwide face increasing threats from pollution, climate change, and industrial activities. Traditional water quality monitoring is often labor-intensive, intermittent, and susceptible to data manipulation or errors. This project addresses these challenges by creating a continuous, tamper-proof monitoring system that can detect contamination events in near real-time, while maintaining an auditable record of all water quality data.</p>
+                
+                    <p><strong>Sustainability Impacts:</strong><br>
+                        AquaSense contributes to environmental sustainability through:
+                        <ul>
+                            <li><strong>Early Contamination Detection:</strong> Real-time monitoring enables rapid response to pollution events, minimizing ecological damage</li>
+                            <li><strong>Resource Optimization:</strong> Targeted water treatment based on actual conditions rather than predetermined schedules</li>
+                            <li><strong>Long-term Ecosystem Analysis:</strong> Creating comprehensive datasets for understanding aquatic ecosystem dynamics</li>
+                            <li><strong>Regulatory Compliance:</strong> Providing immutable evidence for environmental regulations enforcement</li>
+                            <li><strong>Community Empowerment:</strong> Increasing transparency by making water quality data publicly accessible</li>
+                        </ul>
+                    </p>
+                    
+                    <h3>Skills Required:</h3>
+                    <ul>
+                        <li><strong>Technical Skills:</strong> IoT sensor programming, Embedded systems development, Blockchain implementation (Hyperledger Fabric), Cloud architecture, Machine learning for anomaly detection</li>
+                        <li><strong>Methodologies:</strong> Time series analysis, LSTM networks for predictive modeling, Consensus mechanisms for blockchain validation</li>
+                    </ul>
+                
+                    <p><strong>My Contribution:</strong><br>
+                        Designed the blockchain architecture for data integrity verification and developed the smart contracts governing data validation and access control. Created the anomaly detection algorithms that process incoming sensor data to identify abnormal water quality patterns. Coordinated field testing with environmental agencies to validate system performance under various conditions and optimized the energy efficiency of the sensor nodes to enable long-term deployment in remote locations.
+                    </p>
+                
+                    <h3>Achievements/Results:</h3>
+                    <ul>
+                        <li>Successfully deployed a network of 50+ sensor nodes across three watershed areas</li>
+                        <li>Achieved 94% accuracy in detecting contamination events with a false positive rate below 3%</li>
+                        <li>Reduced anomaly detection latency to under 15 minutes from sensor measurement</li>
+                        <li>Implemented a tamper-proof blockchain record with over 10 million data points securely stored</li>
+                        <li>Developed a public-facing dashboard with over 2,000 monthly active users from environmental agencies and research institutions</li>
+                    </ul>
+                
+                    <h3>Tools/Technologies Used:</h3>
+                    <ul>
+                        <li>Hardware: Arduino-based custom sensor arrays, LoRaWAN for long-range data transmission</li>
+                        <li>Blockchain: Hyperledger Fabric for permissioned blockchain implementation</li>
+                        <li>Cloud: AWS IoT Core for device management, Lambda for serverless processing</li>
+                        <li>Machine Learning: TensorFlow for anomaly detection and water quality prediction</li>
+                        <li>Visualization: Grafana for real-time dashboards and alerts</li>
+                    </ul>
+                    
+                    <p style="color: var(--link-color); font-weight: bold;"><strong>Note:</strong> AquaSense has been selected for extended deployment by the Environmental Protection Agency as part of their next-generation water monitoring initiative. A detailed technical white paper on the system architecture and implementation is available upon request.</p>
+                </section>
+
+                <section id="contact" class="A_p_h1">
+                    <h2>Contact</h2>
+                    <h1>Let's Connect</h1>
+                    <p>Thank you for exploring my project portfolio. I am always open to discussing research collaborations, academic opportunities, or questions about my work.</p>
+                    
+                    <p>You can reach me through the following channels:</p>
+                    
+                    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 30px 0;">
+                        <a href="mailto:s.a.tanim@example.edu" style="text-decoration: none; padding: 15px 25px; background-color: var(--profile-link-bg); border-radius: 8px; display: flex; align-items: center; gap: 10px; transition: all 0.3s ease;">
+                            <span style="font-size: 24px;">📧</span>
+                            <span>Email</span>
+                        </a>
+                        
+                        <a href="https://www.linkedin.com/in/shariaarfintanim" target="_blank" style="text-decoration: none; padding: 15px 25px; background-color: var(--profile-link-bg); border-radius: 8px; display: flex; align-items: center; gap: 10px; transition: all 0.3s ease;">
+                            <span style="font-size: 24px;">💼</span>
+                            <span>LinkedIn</span>
+                        </a>
+                        
+                        <a href="https://github.com/s-a-tanim" target="_blank" style="text-decoration: none; padding: 15px 25px; background-color: var(--profile-link-bg); border-radius: 8px; display: flex; align-items: center; gap: 10px; transition: all 0.3s ease;">
+                            <span style="font-size: 24px;">💻</span>
+                            <span>GitHub</span>
+                        </a>
+                        
+                        <a href="https://scholar.google.com/citations?user=xxxx" target="_blank" style="text-decoration: none; padding: 15px 25px; background-color: var(--profile-link-bg); border-radius: 8px; display: flex; align-items: center; gap: 10px; transition: all 0.3s ease;">
+                            <span style="font-size: 24px;">📚</span>
+                            <span>Google Scholar</span>
+                        </a>
+                    </div>
+                    
+                    <p>I am currently seeking opportunities for graduate studies and research collaborations in the fields of artificial intelligence, sustainability technologies, and healthcare applications of machine learning.</p>
+                    
+                    <p>For academic inquiries or project collaboration proposals, please include relevant details in your message to expedite the discussion process.</p>
+                </section>
+            </div>
+            
+            <footer>
+                <p>&copy; 2025 Sharia Arfin Tanim. All rights reserved.</p>
+            </footer>
         </div>
-    </section>
-    
-    <section id="project1" class="A_p_h1">
-        <h2>Project 1</h2>
-        <h1>Prediction of Vehicle CO2 Emissions with eXplainable AI Integration for Environmental Sustainability</h1>
-        <figure>
-            <img src="P1_1.jpg" alt="Project 1 Image" class="project-image">
-            <figcaption><strong>Figure 1: </strong>Illustration depicting the carbon dioxide cycle from extraction of oil to vehicle emissions, which subsequent
-                environmental impacts like heat increase.</figcaption>
-        </figure>
-            <h3>Brief Description</h3>
-            <p>In response to the growing environmental concerns associated with CO2 emissions from transportation. This project developed <strong>CarbonMLP</strong>, a deep learning model designed to predict vehicle CO2 emissions based on various vehicle attributes such as engine type, fuel efficiency, weight, and other specifications. The model not only provides accurate predictions but also integrates <strong>explainable AI (XAI)</strong> techniques to enhance transparency, interpretability. This approach make it easier to understand the driving factors behind CO2 emissions. This project aims to support environmental sustainability by providing a powerful tool to identify and mitigate high CO2 emissions from vehicles.</p>
-            <figure>
-            <img src="P1_2.jpg" alt="Project 1 Image" class="project-image2">
-            <figcaption><strong>Figure 2: </strong>Percentage of each vehicle category contribu-
-                tiong to total CO2 emissions.</figcaption>
-        </figure>
-            <h3>Relevant Background</h3>
-            <p>Transportation is one of the largest contributors to <strong>greenhouse gas emissions</strong>, primarily through the emission of <strong>carbon dioxide (CO2)</strong>. CO2 is a major driver of global warming, resulting in an increase in average global temperatures and contributing to extreme weather events such as floods, heatwaves, rising sea levels, and more. Vehicle emissions play a significant role in this, with high-performance vehicles often producing more CO2 than fuel-efficient ones.</p>
-        
-            <p>By accurately predicting vehicle CO2 emissions, it becomes possible to:
-                <ul>
-                    <li><strong>Track pollution sources</strong>: Understanding which vehicle models contribute the most CO2 allows for more targeted interventions and regulations.</li>
-                    <li><strong>Encourage green vehicle adoption</strong>: Governments and consumers can identify fuel-efficient vehicles, thus promoting cleaner alternatives.</li>
-                    <li><strong>Optimize vehicle usage</strong>: For businesses managing fleets, accurate CO2 predictions help in planning for more eco-friendly fleet management.</li>
-                </ul>
-            </p>
-        
-            <p>This project utilizes a dataset from the <strong>Canadian government's open data</strong> to analyze the CO2 emissions of different vehicles and use deep learning techniques to predict their emissions. The approach integrates both <strong>machine learning</strong> and <strong>deep learning</strong> models to provide robust predictions that can drive actionable insights for environmental policies, regulations, and consumer decisions.</p>
-        
-            <h3>Sustainability Impacts and CO2 Emission Analysis</h3>
-            <p>In the context of sustainability, this project goes beyond just predicting CO2 emissions. It provides actionable data that can help shape a greener future. Here’s how the project contributes to sustainability:</p>
-        
-            <ul>
-                <li><strong>Promoting Clean Energy Use</strong>: By analyzing the relationship between vehicle attributes (e.g., engine type, fuel consumption, weight) and CO2 emissions. The project provides data to help consumers make eco-friendly decisions when purchasing a vehicle. Fuel-efficient vehicles, or electric vehicles (EVs), emit significantly less CO2, thus helping to reduce the overall carbon footprint.</li>
-                <li><strong>Policy Design and Regulation</strong>: Governments can use these predictions to design <strong>carbon taxation policies</strong> or <strong>emission standards</strong> for vehicles. With accurate prediction tools, governments can identify high-emission vehicles and enforce stricter regulations for these vehicles, promoting the transition to more sustainable transportation.</li>
-                <li><strong>Carbon Footprint Reduction</strong>: For organizations managing fleets, being able to predict CO2 emissions allows for more strategic planning. Fleet managers can replace old, high-emission vehicles with energy-efficient or electric vehicles, reducing their fleet’s <strong>overall carbon footprint</strong>. This has direct implications for improving a company's sustainability credentials.</li>
-                <li><strong>Environmental Impact Forecasting</strong>: The model enables long-term forecasting by simulating various scenarios where different kinds of vehicles are introduced into the market. The results from these simulations can inform future decisions on how to reduce overall transportation emissions. For example, governments can forecast the impact of transitioning from conventional fuel cars to electric vehicles (EVs) on national CO2 levels.</li>
-            </ul>
-        
-            <h3>Skills Required</h3>
-            <ul>
-                <li><strong>Technical Skills</strong>: 
-                    <ul>
-                        <li>Python, TensorFlow, Keras for deep learning implementation</li>
-                        <li>SHAP (Shapley Additive Explanations) for model interpretability</li>
-                        <li>Data preprocessing and feature engineering for clean data input</li>
-                    </ul>
-                </li>
-                <li><strong>Methodologies</strong>:
-                    <ul>
-                        <li>Multilayer Perceptron (MLP) for deep learning model</li>
-                        <li>Hyperparameter tuning to optimize model performance</li>
-                        <li>Explainable AI (XAI) using SHAP to improve model transparency</li>
-                        <li>Statistical analysis for feature importance and CO2 emission forecasting</li>
-                    </ul>
-                </li>
-                <!-- <li><strong>Soft Skills</strong>:
-                    <ul>
-                        <li>Data Analysis and Problem-solving to explore relationships between vehicle attributes and CO2 emissions</li>
-                        <li>Environmental Sustainability Awareness to align project goals with real-world impact on reducing emissions</li>
-                    </ul>
-                </li> -->
-            </ul>
-        
-            <h3>My Contribution</h3>
-            <p>As the project leader, I was responsible for overseeing all stages starting from data collection and preprocessing to model building and evaluation. I developed the CarbonMLP deep learning model using the Multilayer Perceptron (MLP) architecture and optimized it through hyperparameter tuning to ensure accurate predictions of CO2 emissions. Additionally, I contributed to building the project proposal and conducted the analytical work to evaluate the sustainability impact of our model’s predictions by ensuring the results align with long-term environmental goals.</p>
+    </div>
 
-        
-            <h3>Achievements/Results</h3>
-            <ul>
-                <li><strong>Model Accuracy</strong>: Achieved a high <strong>R-squared value</strong> of 0.9957, indicating that the model explains 99.57% of the variance in CO2 emissions.</li>
-                <li><strong>Mean Squared Error (MSE)</strong> of 0.0001, showing excellent predictive performance.</li>
-                <li><strong>Explainability</strong>: Integrated SHAP to provide feature importance insights, allowing us to explain which factors contribute most to CO2 emissions. This insight supports the decision-making process for reducing emissions.</li>
-                <li><strong>Environmental Impact</strong>: The model was designed to help predict and reduce CO2 emissions, which will have a positive long-term effect on <strong>environmental sustainability</strong> by encouraging the use of more eco-friendly vehicles.</li>
-            </ul>
-        
-            <h3>Tools/Technologies Used</h3>
-            <ul>
-                <li>Python, TensorFlow, Keras for deep learning model development</li>
-                <li>SHAP for explainability</li>
-                <li>Jupyter for interactive development</li>
-                <li>Matplotlib, Seaborn for visualizations</li>
-                <li>Pandas and NumPy for data manipulation and preprocessing</li>
-            </ul>
-            <p style="color: #D2691E; font-weight: bold;"><strong>Note:</strong> This project has been accepted for publication in a scientific journal. As per the journal's policy I cannot share resources until the official release. Thank you for your understanding.</p>
-
-
-        </section>
-        
-        <section id="project2" class="A_p_h1">
-            <h2>Project 2</h2>
-            <h1>Generative AI for Surface-Level Fire Detection Using Text-to-Image Stable Diffusion</h1>
-            <figure>
-            <img src="P2_1.jpg" alt="Project 2 Image" class="project-image">
-            <figcaption><strong>Figure 1: </strong>Ovation for interpretability.</figcaption>
-        </figure>
-            <p><strong>Brief Description:</strong><br>
-                Develop a Generative AI Image Augmentation Framework (GAII) to address the limitations of small wildfire datasets. Create synthetic datasets using Stable Diffusion for enhanced classification and accurate detection of surface-level fires. Build a Multimodal Deep Belief Network (DBN) to classify wildfire cases with high accuracy.</p>
-            
-            <img src="P2-2.jpg" alt="Project 2 Image" class="project-image2">
-            <p><strong>Sustainability Impacts:</strong><br>
-               Balances datasets, enabling underrepresented regions or scenarios to be equally represented in training data. The model effectively addresses challenges posed by limited datasets by generating synthetic images that closely mimic real-world scenarios. Environmental challenges like flood monitoring, deforestation detection, and air pollution visualization, fostering innovation in climate-tech solutions.
-
-            </p>
-            
-            <h3>Skills Required:</h3>
-<ul>
-    <li><strong>Technical Skills:</strong>Python, Hugging Face Diffusers Library for generative AI, SHAP, Grad-CAM, and LIME for explainability.</li>
-    <li><strong>Methodologies:</strong> Multimodal Deep Belief Network (DBN) for classification, Generative AI image augmentation for dataset balancing, Image quality was assessed using PSNR, SSIM, and LPIPS.</li>
-    <!-- <li><strong>Soft Skills:</strong> Research, Problem Solving, Communication, Privacy Concerns Management</li> -->
-</ul>
-
-        
-            <p><strong>My Contribution:</strong><br>
-                Conducted performance evaluations on synthetic and real datasets. Drafted comprehensive sustainability impact analyses aligning project results with environmental protection objectives. Additionally, conceptualized and assessed the feasibility of the project also ensuring its alignment with both technical and ecological viability.
-
-            </p>
-        
-            <h3>Achievements/Results:</h3>
-    <p>Demonstration of the scalability potential for Generative AI to address data scarcity in global wildfire management.</p>
-    <!-- <li>Successful encryption and summation of model parameters without compromising performance.</li>
-    <li>Validation of the model's reliability and applicability in clinical settings.</li>
-    <li>Demonstrated the feasibility of federated learning in sensitive data environments particularly in healthcare.</li> -->
-        
-            <h3>Tools/Technologies Used:</h3>
-            <ul>
-                <li>Generative AI: Stable Diffusion, Hugging Face Diffusers Library</li>
-                <li>Deep Learning Frameworks: PyTorch, TensorFlow.</li>
-                <li>XAI Libraries: SHAP, Grad-CAM, LIME</li>
-                <li>Visualization Tools: Matplotlib, Seaborn.</li>
-         
-            </ul>
-            
-            <p style="color: #D2691E; font-weight: bold;"><strong>Note:</strong> This project is under review in a scientific journal. As per the journal's policy I cannot share resources until the official release. Thank you for your understanding.</p>
-
-        </section>  
-
-        <section id="project3" class="A_p_h1">
-            <h2>Project 3</h2>
-            <h1>Secure Federated Learning for Parkinson’s Disease: Non-IID Data Partitioning and Homomorphic Encryption Strategies</h1>
-            <figure>
-            <img src="P3_1.jpg" alt="Project 3 Image" class="project-image">
-            <figcaption><strong>Figure 1: </strong>The architectural diagram of the method is shown by dividing into three steps.</figcaption>
-        </figure>
-            <p><strong>Brief Description:</strong><br>
-                In this project, we explore methods to improve both privacyterms of federated learning (FL) models by implementing two key techniques: homomorphic encryption and attention-based fusion. In FL it involves client-side training of models using multiple users' data which suffers from drawbacks such as privacy issues and the variability of data across different users (data heterogeneity). To address these challenges, we introduced a Secure Federated Learning (SFL) algorithm that avoids problems associated with Non-Independent and Identically Distributed (Non-IID) data by introducing a proposed partitioning method for datasets. Then, we used homomorphic encryption to securely sum encrypted model parameters. Additionally, attention-based fusion techniques were applied to boost model accuracy and robustness.</p>
-            
-            <p><strong>Relevant Background:</strong><br>
-                Parkinson’s disease (PD) is a progressive neurological disorder thats why detecting its progression early can significantly impact treatment for patients. FL offers a privacy-preserving framework for training machine learning models on distributed data, but the challenge arises from the variability in data (heterogeneity) and the need to protect sensitive patient data. In this study, we handle the problem of Non-IID data in federated learning using homomorphic encryption and attention-based fusion techniques by demonstrating the potential for scalable and secure learning in healthcare.</p>
-        
-            <p><strong>Sustainability Impacts and Data Security:</strong><br>
-                This project addresses two major concerns: improving model accuracy while preserving privacy. The use of homomorphic encryption ensures that sensitive health data remains secure, while attention-based fusion improves model robustness, leading to better disease progression predictions. This approach can be scaled to other healthcare applications where data security is a priority, promoting both privacy and sustainability in data usage.
-            </p>
-            
-            <h3>Skills Required:</h3>
-<ul>
-    <li><strong>Technical Skills:</strong> Python, PySyft, PyTorch, Homomorphic Encryption, Federated Learning Techniques</li>
-    <li><strong>Methodologies:</strong> Federated Learning, Homomorphic Encryption, Attention-Based Fusion, Secure Model Aggregation</li>
-    <!-- <li><strong>Soft Skills:</strong> Research, Problem Solving, Communication, Privacy Concerns Management</li> -->
-</ul>
-
-        
-            <p><strong>My Contribution:</strong><br>
-                Involving developed the Secure Federated Learning algorithm to address the challenges of Non-IID data concepts and implemented the homomorphic encryption strategy for secure model training. Furthermore, I evaluated the model's performance and analyzed the results, focusing on ensuring privacy and efficiency in clinical applications.
-            </p>
-        
-            <h3>Achievements/Results:</h3>
-<ul>
-    <li>Significant improvement in robustness compared to traditional methods.</li>
-    <li>Successful encryption and summation of model parameters without compromising performance.</li>
-    <li>Validation of the model's reliability and applicability in clinical settings.</li>
-    <li>Demonstrated the feasibility of federated learning in sensitive data environments particularly in healthcare.</li>
-</ul>
-
-        
-            <h3>Tools/Technologies Used:</h3>
-            <ul>
-                <li>Python, PyTorch for deep learning</li>
-                <li>PySyft for federated learning</li>
-                <li>Homomorphic Encryption libraries for secure data processing</li>
-                <li>Matplotlib, Seaborn for data visualization</li>
-            </ul>
-            
-            <p style="color: #D2691E; font-weight: bold;"><strong>Note:</strong> This project has already been published in a scientific journal. You can access it through the following link: <a href="https://ieeexplore.ieee.org/document/10666687" target="_blank">Secure Federated Learning for Parkinson’s Disease: Non-IID Data Partitioning and Homomorphic Encryption Strategies</a>. Thank you for your interest!</p>
-
-        </section>
-        
-
-        <section id="project4" class="A_p_h1">
-            <h2>Project 4</h2>
-            <h1>A comprehensive dental dataset of six classes</h1>
-            <figure>
-            <img src="P4_1.png" alt="Project 3 Image" class="project-image">
-            <figcaption><strong>Figure 1: </strong>Example of a) Caries, b) Impacted Teeth, c) Healthy Teeth, d) BDC/BDR, e) Infection, f) Fractured Teeth.</figcaption>
-        </figure>
-            <p><strong>Brief Description:</strong><br>
-                This project involved the creation of a comprehensive dental dataset aimed at advancing research on deep learning-based detection and classification of dental diseases. The dataset includes 232 high-quality panoramic dental radiographs categorized into six major classes: healthy teeth, caries, impacted teeth, infections, fractured teeth, and broken-down crowns/roots (BDC/BDR). Images were collected from three private clinics in Dhaka, Bangladesh. Samsung A52 phone has a 64-megapixel camera used. Contrast-limited adaptive Histogram Equalization (CLAHE) was employed to enhance image clarity, followed by data augmentation to diversify the dataset. Annotated via the CVAT tool and reviewed by dental experts. This dataset is publicly available for researchers in AI, computer science, and dental informatics, fostering interdisciplinary collaboration.</p>
-            
-            
-        
-            <p><strong>Sustainability Impacts and Data Security:</strong><br>
-               
-The dataset supports sustainable research practices by enabling the development of AI-driven solutions that improve diagnostic accuracy while reducing reliance on manual dental examinations. By maintaining patient confidentiality and providing annotated and augmented data. It promotes ethical data usage and scalability across healthcare applications. The dataset also encourages collaboration between technology experts and dental professionals to integrate AI in healthcare while improving accessibility to automated dental diagnostics globally.
-
-            </p>
-            
-            <h3>Skills Required:</h3>
-<ul>
-    <li><strong>Technical Skills:</strong> Image preprocessing, annotation tools, machine learning dataset preparation</li>
-    <li><strong>Methodologies:</strong> Contrast enhancement (CLAHE), data augmentation, multi-class image detection techniques.</li>
-    <!-- <li><strong>Soft Skills:</strong> Research, Problem Solving, Communication, Privacy Concerns Management</li> -->
-</ul>
-
-        
-            <p><strong>My Contribution:</strong><br>
-                Supervised the data acquisition process by ensuring high-quality images and compliance with ethical considerations. Applied CLAHE for contrast enhancement and performed data augmentation to improve dataset diversity and robustness. Coordinated the annotation of radiographs using the CVAT tool and ensured accuracy through expert reviews.
-
-
-            </p>
-        
-            <h3>Achievements/Results:</h3>
-<ul>
-    <li>Successfully developed a benchmark dental dataset publicly available for academic and clinical research.
-    </li>
-    <li>Enhanced image quality and diversity, improving the dataset's usability for deep learning applications.
-    </li>
-    <li>Demonstrated the utility of the dataset in advancing AI-driven dental diagnostics.
-    </li>
-    <!-- <li>Demonstrated the feasibility of federated learning in sensitive data environments particularly in healthcare.</li> -->
-</ul>
-
-        
-            <h3>Tools/Technologies Used:</h3>
-            <ul>
-                <li><strong>Hardware: </strong>Samsung A52 smartphone for image acquisition</li>
-                <li><strong>Software: </strong>CVAT tool for annotation, OpenCV for image preprocessing, and augmentation tools for data diversification.</li>
-                <!-- <li>Homomorphic Encryption libraries for secure data processing</li>
-                <li>Matplotlib, Seaborn for data visualization</li> -->
-            </ul>
-            
-            <p style="color: #D2691E; font-weight: bold;"><strong>Note:</strong> This project has already been published in a scientific journal. You can access it through the following link: <a href="https://www.sciencedirect.com/science/article/pii/S2352340924009326?via%3Dihub" target="_blank">A comprehensive dental dataset of six classes for deep learning based object detection study</a>. Thank you for your interest!</p>
-
-        </section>
-        
-
-        <section id="project5" class="A_p_h1">
-            <h2>Project 5</h2>
-            <h1>Retail Management System</h1>
-            <figure>
-            <img src="P5_1.png" alt="Project 3 Image" class="project-image">
-            <figcaption><strong>Figure 1: </strong>Class diagram.</figcaption>
-        </figure>
-            <p><strong>Brief Description:</strong><br>
-                This project focuses on the design and implementation of a retail management system to streamline operations in retail stores or chains. The system integrates key modules such as inventory management, sales processing, employee management, and customer and supplier information tracking. It involves three primary users: Admin, Manager, and Cashier. The Admin oversees employee details, the Manager handles inventory and supplier interactions, and the Cashier processes sales transactions. The system simplifies stock management, report generation, and user interaction, providing a one-stop solution for small retailers and enhancing the shopping experience for customers.</p>
-            
-            
-        
-            <p><strong>Sustainability Impacts and Data Security:</strong><br>
-               
-                The system promotes operational efficiency and reduces the need for manual tracking of inventory, employee schedules, and sales, saving both time and resources. By centralizing retail operations, it minimizes errors, improves data accuracy, and supports sustainable business growth. The inclusion of customer and supplier modules enhances collaboration across the supply chain, while the use of a database ensures secure and scalable data storage.
-            </p>
-            
-            <h3>Skills Required:</h3>
-<ul>
-    <li><strong>Technical Skills:</strong> SQL, Database Schema Design, ER and Class Diagrams, Query Optimization.</li>
-    <li><strong>Methodologies:</strong> Entity-Relationship Modeling, Object-Oriented Design, Activity and Use Case Diagrams.</li>
-    <!-- <li><strong>Soft Skills:</strong> Research, Problem Solving, Communication, Privacy Concerns Management</li> -->
-</ul>
-
-        
-            <p><strong>My Contribution:</strong><br>
-                Designed and developed the system’s database schema, including detailed table structures for entities like Location, Job, Employee, Product, and Sales. Implemented SQL queries for key tasks such as employee-supplier location matching, sales analysis, and product performance evaluation. Created ER diagrams, Class Diagrams, and Activity Diagrams to illustrate the system’s architecture and workflows.
-
-
-            </p>
-        
-            <h3>Achievements/Results:</h3>
-<ul>
-    <li>Successfully developed a comprehensive database schema with ten interconnected tables, ensuring data consistency and integrity.        .
-    </li>
-    <li>Implemented complex SQL queries to extract insightful analytics, such as identifying top-performing employees and products with maximum profit margins.
-    </li>
-    <li>Enhanced system usability by including efficient task automation for inventory management, sales reporting, and employee tracking.
-    </li>
-    <!-- <li>Demonstrated the feasibility of federated learning in sensitive data environments particularly in healthcare.</li> -->
-</ul>
-
-        
-            <h3>Tools/Technologies Used:</h3>
-            <ul>
-                <li><strong>Database Management: </strong>SQL for table creation, schema design, and query execution.</li>
-                <li><strong>Modeling Tools: </strong>ER diagrams, Class Diagrams, Use Case Diagrams, and Activity Diagrams for system design.</li>
-                <li><strong>Software: </strong>MySQL</li>
-                <!-- <li>Matplotlib, Seaborn for data visualization</li> -->
-            </ul>
-            
-            <p style="color: #D2691E; font-weight: bold;"><strong>Note:</strong> This project can be accessed through the following link: <a href="https://github.com/s-a-tanim/Advance-Data-Base/blob/main/Database_project_report.pdf" target="_blank">Link</a>. Thank you for your interest!</p>
-
-        </section>
-
-    <section id="contact">
-        <h2>Contact</h2>
-        <p> <a href="mailto:shariaarfin096@gmail.com">shariaarfin096@gmail.com</a></p>
-        <p>
-            <a href="https://www.linkedin.com/in/shariaarfintanim/" target="_blank">LinkedIn</a>
-        </p>
-        <p>
-            <a href="https://www.researchgate.net/profile/Sharia-Tanim-2" target="_blank">ResearchGate</a>
-        </p>
-    </section>
-    
-    <div id="popup-bar">
-        <a href="#home-title">Home</a>
+    <div id="popup-bar" class="hide">
+        <a href="#Home">Home</a>
         <a href="#project1">Project 1</a>
         <a href="#project2">Project 2</a>
         <a href="#project3">Project 3</a>
         <a href="#project4">Project 4</a>
         <a href="#project5">Project 5</a>
-<!--         <a href="#contact">Contact</a> -->
+        <a href="#contact">Contact</a>
     </div>
-    
-    <!-- <section id="project1" class="project">
-        <h2>Project 1</h2>
-        <p>Details about project 1...</p>
-    </section>
-    
-    <section id="project2" class="project">
-        <h2>Project 2</h2>
-        <p>Details about project 2...</p>
-    </section>
-    
-    <section id="project3" class="project">
-        <h2>Project 3</h2>
-        <p>Details about project 3...</p>
-    </section> -->
-    
 
-
-    <footer>
-        <p>&copy; 2025 Sharia Arfin Tanim. All rights reserved. Updated: 08/01/2025</p>
-    </footer>
-
-
-<!-- <script>
-    let timeout;
-    let popupBar = document.getElementById('popup-bar');
-
-    // Function to handle the display of popup-bar based on scroll
-    function handleScroll() {
-        // Hide the popup bar when scrolling
-        popupBar.style.display = 'none';
-
-        // Clear the previous timeout if any
-        clearTimeout(timeout);
-
-        // Set a timeout to show the popup bar after scrolling stops (200ms delay)
-        timeout = setTimeout(function() {
-            popupBar.style.display = 'block'; // Show the popup bar after scroll stops
-        }, 200);
-    }
-
-    // Event listener for scroll event
-    window.addEventListener('scroll', handleScroll);
-</script> -->
-
-<script>
-    let showTimeout;
-    let hideTimeout;
-    let popupBar = document.getElementById('popup-bar');
-    
-    // Function to check if the Home section is in view
-    function isInHomeSection() {
-        const homeSection = document.getElementById('Home');
-        const rect = homeSection.getBoundingClientRect();
-        return rect.top <= 0 && rect.bottom >= window.innerHeight; // Check if Home section is visible
-    }
-    
-    // Function to handle the display of the popup bar based on scroll
-    function handleScroll() {
-        // If the Home section is in view, block the popup bar from showing
-        if (isInHomeSection()) {
-            popupBar.classList.remove('show');
-            popupBar.classList.add('hide');
-            return; // Exit the function and prevent showing the popup bar
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeText = document.getElementById('theme-text');
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.textContent = '☀️';
+            themeText.textContent = 'Light Mode';
         }
-    
-        // Clear previous timeouts if any
-        clearTimeout(showTimeout);
-        clearTimeout(hideTimeout);
-    
-        // Hide the popup bar when scrolling
-        popupBar.classList.remove('show');
-        popupBar.classList.add('hide');
-    
-        // Set a timeout to show the popup bar after scroll stops (200ms delay)
-        showTimeout = setTimeout(function () {
-            popupBar.classList.remove('hide');
-            popupBar.classList.add('show'); // Show the popup bar with slide-in animation
-    
-            // Set a timeout to hide the popup bar 2 seconds after it appears
-            hideTimeout = setTimeout(function () {
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light Mode';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Dark Mode';
+            }
+        });
+        
+        // Navigation bar scroll behavior
+        const popupBar = document.getElementById('popup-bar');
+        let lastScrollY = window.scrollY;
+        let scrollDirection = 'down';
+        
+        // Function to handle scroll event
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            // Determine scroll direction
+            scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
+            lastScrollY = currentScrollY;
+            
+            // Show popup bar when scrolling up, hide when scrolling down
+            if (currentScrollY > 300) {
+                popupBar.classList.remove('hide');
+                popupBar.classList.add('show');
+                
+                if (scrollDirection === 'down' && currentScrollY > 400) {
+                    setTimeout(() => {
+                        popupBar.classList.remove('show');
+                        popupBar.classList.add('hide');
+                    }, 2000);
+                }
+            } else {
                 popupBar.classList.remove('show');
-                popupBar.classList.add('hide'); // Hide the popup bar with slide-out animation
-            }, 2000); // 2 seconds delay before hiding
-        }, 200); // 200ms delay after scrolling stops
-    }
-    
-    // Event listener for the scroll event
-    window.addEventListener('scroll', handleScroll);
-    
-    // Ensure the popup is hidden when initially loading if the Home section is visible
-    window.addEventListener('load', function () {
-        if (isInHomeSection()) {
-            popupBar.classList.remove('show');
-            popupBar.classList.add('hide');
-        }
-    });
-    
-    // Add event listeners to prevent hiding on hover
-    popupBar.addEventListener('mouseenter', function () {
-        clearTimeout(hideTimeout); // Clear the timeout that hides the popup
-    });
-    
-    popupBar.addEventListener('mouseleave', function () {
-        // Set a timeout to hide the popup bar 2 seconds after mouse leaves
-        hideTimeout = setTimeout(function () {
-            popupBar.classList.remove('show');
-            popupBar.classList.add('hide'); // Hide the popup bar with slide-out animation
-        }, 2000); // Delay of 2 seconds before hiding
-    });
-</script>
-
-
-
+                popupBar.classList.add('hide');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Set active navigation link based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.topnav a');
+            const popupLinks = document.querySelectorAll('#popup-bar a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= (sectionTop - 200)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            // Update main navigation
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Update popup navigation
+            popupLinks.forEach(link => {
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.style.color = 'var(--link-color)';
+                    link.style.fontWeight = '700';
+                } else {
+                    link.style.color = 'var(--text-color)';
+                    link.style.fontWeight = '500';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
