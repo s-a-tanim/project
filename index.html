@@ -908,83 +908,78 @@
             }
         });
         
-        // // Navigation bar scroll behavior
-        // const popupBar = document.getElementById('popup-bar');
-        // let lastScrollY = window.scrollY;
-        // let scrollDirection = 'down';
-        
-        // // Function to handle scroll event
-        // window.addEventListener('scroll', () => {
-        //     const currentScrollY = window.scrollY;
-            
-        //     // Determine scroll direction
-        //     scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
-        //     lastScrollY = currentScrollY;
-            
-        //     // Show popup bar when scrolling up, hide when scrolling down
-        //     if (currentScrollY > 300) {
-        //         popupBar.classList.remove('hide');
-        //         popupBar.classList.add('show');
-                
-        //         if (scrollDirection === 'down' && currentScrollY > 400) {
-        //             setTimeout(() => {
-        //                 popupBar.classList.remove('show');
-        //                 popupBar.classList.add('hide');
-        //             }, 2000);
-        //         }
-        //     } else {
-        //         popupBar.classList.remove('show');
-        //         popupBar.classList.add('hide');
-        //     }
-        // });
-        
-        // // Smooth scrolling for anchor links
-        // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        //     anchor.addEventListener('click', function(e) {
-        //         e.preventDefault();
-                
-        //         document.querySelector(this.getAttribute('href')).scrollIntoView({
-        //             behavior: 'smooth'
-        //         });
-        //     });
-        // });
-        
-    //     // Set active navigation link based on scroll position
-    //     window.addEventListener('scroll', () => {
-    //         const sections = document.querySelectorAll('section');
-    //         const navLinks = document.querySelectorAll('.topnav a');
-    //         const popupLinks = document.querySelectorAll('#popup-bar a');
-            
-    //         let currentSection = '';
-            
-    //         sections.forEach(section => {
-    //             const sectionTop = section.offsetTop;
-    //             const sectionHeight = section.clientHeight;
-                
-    //             if (window.scrollY >= (sectionTop - 200)) {
-    //                 currentSection = section.getAttribute('id');
-    //             }
-    //         });
-            
-    //         // Update main navigation
-    //         navLinks.forEach(link => {
-    //             link.classList.remove('active');
-    //             if (link.getAttribute('href') === `#${currentSection}`) {
-    //                 link.classList.add('active');
-    //             }
-    //         });
-            
-    //         // Update popup navigation
-    //         popupLinks.forEach(link => {
-    //             if (link.getAttribute('href') === `#${currentSection}`) {
-    //                 link.style.color = 'var(--link-color)';
-    //                 link.style.fontWeight = '700';
-    //             } else {
-    //                 link.style.color = 'var(--text-color)';
-    //                 link.style.fontWeight = '500';
-    //             }
-    //         });
-    //     });
+ <script>
+    // Run all scroll behavior logic only on desktop
+    if (window.innerWidth >= 768) {
+        const popupBar = document.getElementById('popup-bar');
+        const navLinks = document.querySelectorAll('.topnav a');
+        const popupLinks = document.querySelectorAll('#popup-bar a');
+        const sections = document.querySelectorAll('section');
+
+        let lastScrollY = window.scrollY;
+        let scrollDirection = 'down';
+
+        // Show/hide popup bar on scroll
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
+            lastScrollY = currentScrollY;
+
+            if (currentScrollY > 300) {
+                popupBar.classList.remove('hide');
+                popupBar.classList.add('show');
+
+                if (scrollDirection === 'down' && currentScrollY > 400) {
+                    setTimeout(() => {
+                        popupBar.classList.remove('show');
+                        popupBar.classList.add('hide');
+                    }, 2000);
+                }
+            } else {
+                popupBar.classList.remove('show');
+                popupBar.classList.add('hide');
+            }
+
+            // Highlight active nav link
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (currentScrollY >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            popupLinks.forEach(link => {
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.style.color = 'var(--link-color)';
+                    link.style.fontWeight = '700';
+                } else {
+                    link.style.color = 'var(--text-color)';
+                    link.style.fontWeight = '500';
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    }
+</script>
+
      </script>
 
             <script>
