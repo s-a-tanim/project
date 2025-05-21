@@ -258,7 +258,7 @@
             margin-bottom: 10px;
         }
         
-        /* Project images */
+        /* Project images - OPTIMIZED */
         .project-image, .project-image2 {
             max-width: 100%;
             height: auto;
@@ -266,6 +266,9 @@
             box-shadow: 0 4px 10px var(--box-shadow-color);
             margin-bottom: 15px;
             transition: transform 0.3s ease;
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
         }
         
         .project-image:hover, .project-image2:hover {
@@ -343,6 +346,8 @@
             z-index: 100;
             opacity: 0;
             transition: opacity 0.3s ease, transform 0.3s ease;
+            overflow-x: auto;
+            max-width: 90vw;
         }
         
         #popup-bar.show {
@@ -362,10 +367,50 @@
             font-size: 0.9rem;
             transition: color 0.2s ease;
             white-space: nowrap;
+            padding: 5px 10px;
         }
         
         #popup-bar a:hover {
             color: var(--link-color);
+        }
+        
+        /* Loading optimization */
+        .lazy-load {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lazy-load.loaded {
+            opacity: 1;
+        }
+        
+        /* Contact links */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .contact-link {
+            text-decoration: none;
+            padding: 15px 25px;
+            background-color: var(--profile-link-bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            background-color: var(--profile-link-hover);
+            transform: translateY(-3px);
+        }
+        
+        .contact-icon {
+            font-size: 24px;
         }
         
         /* Mobile media query fix for theme toggle button */
@@ -382,7 +427,7 @@
             }
             
             .A_p_h1 {
-                padding: 20px;
+                padding: 20px 15px;
             }
             
             .topnav {
@@ -397,20 +442,58 @@
             #foreground {
                 padding: 20px 15px;
             }
+            
+            #Home {
+                padding: 30px 15px;
+            }
+            
+            .project-image, .project-image2 {
+                max-height: 300px;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-link {
+                width: 80%;
+            }
+        }
+        
+        /* Improved Accessibility */
+        :focus {
+            outline: 2px solid var(--link-color);
+        }
+        
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--link-color);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s ease;
+        }
+        
+        .skip-link:focus {
+            top: 0;
         }
     </style>
 </head>
 <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
     <div id="background">
         <div id="foreground">
             <div id="main">
-                <div id="header">
-                    <h1><a href="https://s-a-tanim.github.io/shariaarfintanim/">Sharia Arfin Tanim</a></h1>
-                    <button id="theme-toggle">
-                        <i id="theme-icon">🌙</i>
+                <header id="header">
+                    <h1><a href="https://s-a-tanim.github.io/shariaarfintanim/" aria-label="Sharia Arfin Tanim's Homepage">Sharia Arfin Tanim</a></h1>
+                    <button id="theme-toggle" aria-label="Toggle dark/light mode">
+                        <i id="theme-icon" aria-hidden="true">🌙</i>
                         <span id="theme-text">Dark Mode</span>
                     </button>
-                    <div class="topnav">
+                    <nav class="topnav" aria-label="Main navigation">
                         <a class="active" href="#Home">Home</a>
                         <a href="#project1">Project 1</a>
                         <a href="#project2">Project 2</a>
@@ -418,17 +501,17 @@
                         <a href="#project4">Project 4</a>
                         <a href="#project5">Project 5</a>
                         <a href="#contact">Contact</a>
-                    </div>
-                </div>
+                    </nav>
+                </header>
                 
-                <div class="line"></div>
+                <div class="line" aria-hidden="true"></div>
 
                 <section id="Home">
                     <h1>Welcome</h1>
                     <p>
                         I am a prospective Master's student.
                         Please feel free to explore my 
-                        <a href="https://s-a-tanim.github.io/shariaarfintanim/" target="_blank">portfolio</a> 
+                        <a href="https://s-a-tanim.github.io/shariaarfintanim/" target="_blank" rel="noopener">portfolio</a> 
                         to learn more about my academic and professional achievements.
                     </p>
                     <p class="note">
@@ -441,14 +524,14 @@
                     <h2>Project 1</h2>
                     <h1>Prediction of Vehicle CO2 Emissions with eXplainable AI Integration for Environmental Sustainability</h1>
                     <figure>
-                        <img src="P1_1.jpg" alt="Project 1 Image" class="project-image">
+                        <img src="/api/placeholder/800/450" alt="Carbon dioxide cycle from oil extraction to vehicle emissions with environmental impacts" class="project-image lazy-load" data-src="P1_1.jpg">
                         <figcaption><strong>Figure 1: </strong>Illustration depicting the carbon dioxide cycle from extraction of oil to vehicle emissions, which subsequent
                             environmental impacts like heat increase.</figcaption>
                     </figure>
                     <h3>Brief Description</h3>
                     <p>In response to the growing environmental concerns associated with CO2 emissions from transportation. This project developed <strong>CarbonMLP</strong>, a deep learning model designed to predict vehicle CO2 emissions based on various vehicle attributes such as engine type, fuel efficiency, weight, and other specifications. The model not only provides accurate predictions but also integrates <strong>explainable AI (XAI)</strong> techniques to enhance transparency, interpretability. This approach make it easier to understand the driving factors behind CO2 emissions. This project aims to support environmental sustainability by providing a powerful tool to identify and mitigate high CO2 emissions from vehicles.</p>
                     <figure>
-                        <img src="P1_2.jpg" alt="Project 1 Image" class="project-image2">
+                        <img src="/api/placeholder/800/450" alt="Pie chart showing percentage of vehicle categories contributing to CO2 emissions" class="project-image2 lazy-load" data-src="P1_2.jpg">
                         <figcaption><strong>Figure 2: </strong>Percentage of each vehicle category contributing to total CO2 emissions.</figcaption>
                     </figure>
                     <h3>Relevant Background</h3>
@@ -519,13 +602,17 @@
                     <h2>Project 2</h2>
                     <h1>Generative AI for Surface-Level Fire Detection Using Text-to-Image Stable Diffusion</h1>
                     <figure>
-                        <img src="P2_1.jpg" alt="Project 2 Image" class="project-image">
+                        <img src="/api/placeholder/800/450" alt="Stable Diffusion model interpretability visualization" class="project-image lazy-load" data-src="P2_1.jpg">
                         <figcaption><strong>Figure 1: </strong>Ovation for interpretability.</figcaption>
                     </figure>
                     <p><strong>Brief Description:</strong><br>
                         Develop a Generative AI Image Augmentation Framework (GAII) to address the limitations of small wildfire datasets. Create synthetic datasets using Stable Diffusion for enhanced classification and accurate detection of surface-level fires. Build a Multimodal Deep Belief Network (DBN) to classify wildfire cases with high accuracy.</p>
                     
-                    <img src="P2-2.jpg" alt="Project 2 Image" class="project-image2">
+                    <figure>
+                        <img src="/api/placeholder/800/450" alt="AI-generated wildfire detection imagery" class="project-image2 lazy-load" data-src="P2-2.jpg">
+                        <figcaption><strong>Figure 2: </strong>Synthetic wildfire image generation using Stable Diffusion models.</figcaption>
+                    </figure>
+                    
                     <p><strong>Sustainability Impacts:</strong><br>
                        Balances datasets, enabling underrepresented regions or scenarios to be equally represented in training data. The model effectively addresses challenges posed by limited datasets by generating synthetic images that closely mimic real-world scenarios. Environmental challenges like flood monitoring, deforestation detection, and air pollution visualization, fostering innovation in climate-tech solutions.
                     </p>
@@ -552,7 +639,7 @@
                     </ul>
                     
                     <p style="color: var(--link-color); font-weight: bold;"><strong>Note:</strong> This project is under review in a scientific journal. As per the journal's policy I cannot share resources until the official release. Thank you for your understanding.</p>
-                </section>  
+                </section>    
 
                 <section id="project3" class="A_p_h1">
                     <h2>Project 3</h2>
