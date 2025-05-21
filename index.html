@@ -689,60 +689,57 @@
                 
       <section id="project4" class="A_p_h1">
                     <h2>Project 4</h2>
-                    <h1>Prediction and Management of Urban Heat Islands Using Deep Learning and Remote Sensing</h1>
+                    <h1>Deep Learning-Based Detection and Classification of Dental Diseases Using Annotated Panoramic Radiographs</h1>
                     <figure>
                         <img src="P4_1.png" alt="Project 4 Image" class="project-image">
-                        <figcaption><strong>Figure 1: </strong>Urban heat island effect visualization showing temperature differences between urban and rural areas.</figcaption>
+                        <figcaption><strong>Figure 1: </strong>Example of annotated panoramic dental radiographs showing various dental conditions..</figcaption>
                     </figure>
                     <p><strong>Brief Description:</strong><br>
-                        This project addresses the growing challenge of urban heat islands (UHIs) in metropolitan areas by developing a deep learning framework that combines satellite imagery, meteorological data, and urban infrastructure information. The model predicts temperature variations across urban landscapes with high spatial resolution, helping city planners identify hot spots and implement targeted mitigation strategies. Our approach integrates computer vision techniques with climatological modeling to create a comprehensive heat management solution for sustainable urban development.</p>
-                    
-                    <figure>
-                        <img src="P4_2.jpg" alt="Project 4 Image" class="project-image2">
-                        <figcaption><strong>Figure 2: </strong>Heatmap prediction of a metropolitan area showing temperature variations across different urban zones.</figcaption>
-                    </figure>
+                        This project presents the development of a benchmark dental radiograph dataset designed to facilitate deep learning-based detection and classification of dental diseases. A total of 232 high-resolution panoramic dental radiographs were collected from three private clinics in Dhaka, Bangladesh, with the support of experienced dental practitioners. The images were classified into six diagnostic categories: healthy teeth, caries, impacted teeth, infections, fractured teeth, and broken-down crowns/roots (BDC/BDR). To enhance image quality and model performance, Contrast-Limited Adaptive Histogram Equalization (CLAHE) and multiple data augmentation techniques were applied. All images were annotated using the CVAT tool and validated by expert dentists to ensure high labeling accuracy. The resulting dataset serves as a reliable resource for training AI models in dental disease recognition.
                     
                     <p><strong>Relevant Background:</strong><br>
-                        Urban Heat Islands are metropolitan areas that experience significantly higher temperatures than surrounding rural regions due to human activities and urban development. The UHI effect can increase energy consumption, elevate pollution levels, compromise water quality, and threaten public health, particularly for vulnerable populations during extreme heat events. As urbanization continues globally, the severity and frequency of UHIs are expected to increase, making this a critical area for research and intervention in sustainable urban planning.</p>
+                         Dental panoramic radiography is a common diagnostic tool used by dentists to assess oral health and identify conditions such as caries, impacted teeth, infections, fractures, and structural decay. However, manual interpretation is time-consuming and prone to variability. The growing demand for AI-assisted diagnosis in dentistry necessitates reliable and publicly available datasets. This project addresses this gap by creating a diverse and high-resolution dental image dataset annotated by professionals, enabling robust model training for accurate and automated disease detection.</p>
                 
                     <p><strong>Sustainability Impacts:</strong><br>
-                        This project directly addresses UN Sustainable Development Goals by providing tools for climate action and sustainable cities. By accurately predicting UHI patterns, our model enables:
+                         This project aligns with goals in public health, technological innovation, and healthcare equity by contributing a scalable solution to improve diagnostic speed and accuracy in dental practices, our model enables:
                         <ul>
-                            <li><strong>Energy Conservation:</strong> Optimizing cooling strategies during peak heat periods</li>
-                            <li><strong>Green Space Planning:</strong> Strategic placement of parks and vegetation to maximize cooling effects</li>
-                            <li><strong>Vulnerable Population Protection:</strong> Identifying high-risk areas for targeted intervention during heat waves</li>
-                            <li><strong>Climate Resilience:</strong> Developing long-term urban design strategies that mitigate the UHI effect</li>
+                            <li><strong>Improved Early Diagnosis:</strong> Automated tools help detect dental diseases at early stages, reducing the need for invasive treatment</li>
+                            <li><strong>Access to Care:</strong> Enables remote screening and diagnosis in underserved areas where dentists are scarce</li>
+                            <li><strong>AI Benchmarking:</strong> Provides a clean, standardized dataset for training and comparing AI models</li>
+                            <li><strong>Clinical Decision Support:</strong> Enhances the efficiency and consistency of dental diagnostics</li>
                         </ul>
                     </p>
                     
                     <h3>Skills Required:</h3>
                     <ul>
-                        <li><strong>Technical Skills:</strong> Python, TensorFlow, Keras, GIS software, Remote sensing data processing</li>
-                        <li><strong>Methodologies:</strong> Convolutional Neural Networks (CNNs), U-Net architecture for image segmentation, Time series analysis, Geospatial modeling</li>
+                        <li><strong>Technical Skills:</strong> Python, OpenCV, TensorFlow, Keras, Roboflow, CVAT, data labeling and preprocessing</li>
+                        <li><strong>Methodologies:</strong> Object detection (YOLO format), multiclass classification, image enhancement (CLAHE), data augmentation, model validation</li>
                     </ul>
                 
                     <p><strong>My Contribution:</strong><br>
                         Led the development of the deep learning architecture, focusing on creating a model that could effectively integrate multispectral satellite imagery with urban infrastructure data. Designed and implemented the data preprocessing pipeline for handling diverse data sources. Conducted validation studies comparing model predictions with ground-based temperature measurements from weather stations across three major cities, ensuring the model's applicability across different urban contexts.
                     </p>
                 
-                    <h3>Achievements/Results:</h3>
-                    <ul>
-                        <li>Achieved temperature prediction accuracy within ±1.2°C of actual measurements</li>
-                        <li>Successfully identified microclimate variations at 10-meter spatial resolution</li>
-                        <li>Developed an interactive visualization tool for city planners to simulate the impact of various green infrastructure interventions</li>
-                        <li>Model predictions led to optimized placement of urban cooling centers in a pilot implementation program</li>
-                    </ul>
-                
-                    <h3>Tools/Technologies Used:</h3>
-                    <ul>
-                        <li>Deep Learning: TensorFlow, Keras for model development</li>
-                        <li>Remote Sensing: Landsat, Sentinel satellite imagery processing</li>
-                        <li>GIS Software: QGIS, ArcGIS for spatial analysis</li>
-                        <li>Data Integration: Google Earth Engine for large-scale data processing</li>
-                        <li>Visualization: Matplotlib, Folium for interactive maps</li>
-                    </ul>
+                   <h3>Achievements/Results:</h3>
+<ul>
+    <li>Developed a publicly available benchmark dataset of 232 panoramic dental radiographs with 1204 labeled instances across six disease classes</li>
+    <li>Achieved object detection performance with 96.03% precision, 86.53% recall, and 93.54% mAP@50</li>
+    <li>Implemented image enhancement using CLAHE, improving radiograph clarity and diagnostic quality</li>
+    <li>Annotated all images using CVAT and validated by dental experts with over 16 and 32 years of experience</li>
+    <li>Created a structured dataset directory for both object detection and classification tasks, split into training, validation, and test sets</li>
+</ul>
+
+<h3>Tools/Technologies Used:</h3>
+<ul>
+    <li>Deep Learning: TensorFlow, Keras for model training and classification</li>
+    <li>Image Processing: OpenCV, CLAHE for contrast enhancement</li>
+    <li>Annotation Tools: CVAT (Computer Vision Annotation Tool) for labeling radiographs</li>
+    <li>Data Augmentation: Roboflow for rotation, flip, shear, and exposure transformations</li>
+    <li>Visualization: Matplotlib for training metrics and image analysis visualization</li>
+</ul>
+
                     
-                    <p style="color: var(--link-color); font-weight: bold;"><strong>Note:</strong> This project is currently in the final stages of development, with complete results expected to be published in the next quarter. Preliminary findings are available upon request for academic collaboration purposes.</p>
+                    <p style="color: var(--link-color); font-weight: bold;"><strong>Note:</strong> This project has already been published in a scientific journal. You can access it through the following link: <a href="https://www.sciencedirect.com/science/article/pii/S2352340924009326?via%3Dihub" target="_blank">A comprehensive dental dataset of six classes for deep learning based object detection study</a>. Thank you for your interest!</p>
                 </section>
 
                 <section id="project5" class="A_p_h1">
